@@ -1,0 +1,16 @@
+clc,clear
+x=-1:0.1:1;
+y1=x.^4;y2=4*x.^3;y3=12*x.^2;y4=24*x;
+figure
+subplot(2,3,[1,2,3])
+plot(x,y1,'linewidth',2.5)
+title('f(x)=x^4')
+subplot(2,3,4)
+plot(x,y2,'linewidth',2.5)
+title('f(x)=4x^3')
+subplot(2,3,5)
+plot(x,y3,'linewidth',2.5)
+title('f(x)=12x^2')
+subplot(2,3,6)
+plot(x,y4,'linewidth',2.5)
+title('f(x)=24x')

@@ -1,0 +1,26 @@
+clc,clear;
+U1=load('computed_HS.dat');
+U2=load('measured_HS.dat');
+x1=U1(:,1);
+y1=U1(:,2);
+z1=U1(:,3);
+x2=U2(:,1);
+y2=U2(:,2);
+y3=interp1(x1,y1,x2);
+tu=sum((y3-y2).^2);
+mau=sum(y2.^2);
+rmse=sqrt(tu/mau)*100;
+t=num2str(rmse);
+t(5)='%';t(6)='';
+plot(x2,y2,'ro');hold on
+[p,tt,dd]=plotyy(x1,y1,x1,z1);
+set(tt,'linestyle','-','Linewidth',1,'color','b');
+set(dd,'linestyle','-','Linewidth',1,'color','r');
+set(p(1),'XLim',[0 20],'YLim',[-0.4 0.4])
+set(p(2),'XLim',[0 20],'YLim',[-0.8 0.8])
+set(p(1),'XTick',[0:2:20],'YTick',[-0.4:0.1:0.4])
+set(p(2),'XTick',[0:2:20],'YTick',[-0.8:0.2:0.8])
+legend(3,'Do dac','Tinh toan');
+text(5,0.2,'RMSE= %')
+
+%rmse=sqrt(sum((y1-y2).^2)/sum(y2))

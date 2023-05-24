@@ -1,0 +1,9 @@
+U=load('VN_north.xyz');
+kd=U(:,1);
+vd=U(:,2);
+dc=U(:,3);
+figure();
+plot3(kd,vd,dc);
+[x,y]=meshgrid(min(kd):300:max(kd),min(vd):300:max(vd));
+z=griddata(kd,vd,dc,x,y);
+surf(x,y,z);
